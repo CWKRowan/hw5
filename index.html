@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <title>Lucky for Life</title>
+    <meta name = 'viewport' content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div id='header'>
+        <h1>Lucky for Life</h1>
+    </div>
+    <div id='numbers'>
+        <div class = "first-box">
+            Winning <br> Numbers:
+        </div>
+        <div id = '0' class = "small-box">&nbsp;</div>
+        <div id = '1' class = "small-box">&nbsp;</div>
+        <div id = '2' class = "small-box">&nbsp;</div>
+        <div id = '3' class = "small-box">&nbsp;</div>
+        <div id = '4' class = "small-box">&nbsp;</div>
+        <div id = '5' class = "small-box">&nbsp;</div>
+    </div>
+    <div id='user-numbers'>
+        <div class = "first-box">
+            Your <br> Numbers:
+        </div>
+        <div id = '6' class = "small-box">&nbsp;</div>
+        <div id = '7' class = "small-box">&nbsp;</div>
+        <div id = '8' class = "small-box">&nbsp;</div>
+        <div id = '9' class = "small-box">&nbsp;</div>
+        <div id = '10' class = "small-box">&nbsp;</div>
+        <div id = '11' class = "small-box">&nbsp;</div>
+    </div>
+    <h2 id = 'results'>&nbsp;</h2>
+    <h2 id = 'lucky'>&nbsp;</h2>
+    <h2 id = 'payout'>&nbsp;</h2>
+    <script language="javascript">
+        // Calculate the random winning numbers
+        max = 48;
+        min = 1;
+        const nums = [Math.floor(((Math.random()*(max))+1)), Math.floor(((Math.random()*(max))+1)), Math.floor(((Math.random()*(max))+1)), Math.floor(((Math.random()*(max))+1)), Math.floor(((Math.random()*(max))+1))];
+        lucky = Math.floor(((Math.random()*(18))+min));
+        nums.sort(function(a, b){return a-b});
+        
+        // Put the winning numbers on the screen
+        for (let i = 0; i < 6; i++){
+            if (i < 5) {
+                document.getElementById(i).innerHTML = (nums[i]);
+            } else {
+                document.getElementById(i).innerHTML = ("Lucky Ball: " + lucky);
+            }
+        }
+        
+        // Get the users numbers
+        userIn = prompt("Please enter your first five lottery numbers separated by a space");
+        const user_nums = userIn.split(' ')
+        user_nums.sort(function(a, b){return a-b});
+        userIn2 = prompt("Please enter your lucky ball number");
+        
+        // Put the users numbers on the screen
+        for (let i = 0; i < 6; i++){
+            if (i < 5) {
+                document.getElementById((i+6)).innerHTML = (user_nums[i]);
+            } else {
+                document.getElementById((i+6)).innerHTML = ("Lucky Ball: " + userIn2);
+            }
+        }
+        
+        // Check if any numbers match
+        count = 0;
+        for (let i = 0; i < 5; i++){
+            for (let j = 0; j < 5; j++){
+                if(nums[i] == user_nums[j]){
+                    count++;
+                }
+            }
+        }
+        if(lucky == userIn2){
+            luckyday = true;
+        } else {
+            luckyday = false;
+        }
+        
+        // Print the results
+        if (count == 0){
+            results = "Sorry, you have zero matching numbers.";
+        } else if (count == 1){
+            results = "You have one matching number!";
+        } else {
+            results = "You have " + count + " matching numbers!";
+        }
+        document.getElementById('results').innerHTML = results;
+        if (luckyday){
+            document.getElementById('lucky').innerHTML = "Congradulations, the lucky ball matches!";
+        } else {
+            document.getElementById('lucky').innerHTML = "The lucky ball does not match.";
+        }
+        
+        // Calculating the total payout
+        if (count == 0){
+            if (luckyday){
+                payout = "$4!";
+            } else {
+                payout = "$0.";
+            }
+        } else if (count == 1){
+            if (luckyday){
+                payout = "$6!";
+            } else {
+                payout = "$0.";
+            }
+        } else if (count == 2){
+            if (luckyday){
+                payout = "$25!";
+            } else {
+                payout = "$3!";
+            }
+        } else if (count == 3){
+            if (luckyday){
+                payout = "$150!";
+            } else {
+                payout = "$20!";
+            }
+        } else if (count == 4){
+            if (luckyday){
+                payout = "$5,000!";
+            } else {
+                payout = "$200!";
+            }
+        } else {
+            if (luckyday){
+                payout = "$7,000 a WEEK for LIFE!";
+            } else {
+                payout = "$25,000 a YEAR for LIFE!"
+            }
+        }
+        document.getElementById('payout').innerHTML = "Your total payout is: " + payout;
+    </script>
+    
+</body>
+</html>

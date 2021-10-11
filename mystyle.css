@@ -1,0 +1,47 @@
+h1{
+    text-align: left;
+    padding: 10px;
+    display: inline-block;
+    color: #FFF;
+}
+#header{
+    box-sizing: border-box;
+    position: fixed;
+    background-color: #800000;
+    height: 100px;
+    width: 100%;
+}
+#numbers{
+    padding-top: 150px;
+    display: flex;
+    justify-contect: center;
+    width: 100%;
+    height: 100px;
+}
+#user-numbers{
+    padding-top: 0px;
+    display: flex;
+    justify-contect: center;
+    width: 100%;
+    height: 100px;
+}
+h2{
+    font-size: 30px;
+    padding-left: 35px;
+}
+.small-box{
+    display: flex;
+    justify-content: center;
+    width: 14%;
+    height: 100%;
+    font-size: 20px;
+}
+.first-box{
+    color: #0020C2;
+    display: flex;
+    justify-content: center;
+    width: 14%;
+    height: 100%;
+    font-size: 20px;
+}
+    
