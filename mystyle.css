@@ -14,14 +14,14 @@ h1{
 #numbers{
     padding-top: 150px;
     display: flex;
-    justify-contect: center;
+    justify-content: center;
     width: 100%;
     height: 100px;
 }
 #user-numbers{
     padding-top: 0px;
     display: flex;
-    justify-contect: center;
+    justify-content: center;
     width: 100%;
     height: 100px;
 }

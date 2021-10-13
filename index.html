@@ -38,12 +38,15 @@
         // Calculate the random winning numbers
         max = 48;
         min = 1;
-        const nums = [Math.floor(((Math.random()*(max))+1)), Math.floor(((Math.random()*(max))+1)), Math.floor(((Math.random()*(max))+1)), Math.floor(((Math.random()*(max))+1)), Math.floor(((Math.random()*(max))+1))];
+        var nums = new Array(5);
+        for (i = 0; i < 5; i++){
+            nums[i] = Math.floor(((Math.random()*(max))+1));
+        }
         lucky = Math.floor(((Math.random()*(18))+min));
-        nums.sort(function(a, b){return a-b});
+        nums = nums.sort(function(a, b){return a-b});
         
         // Put the winning numbers on the screen
-        for (let i = 0; i < 6; i++){
+        for (i = 0; i < 6; i++){
             if (i < 5) {
                 document.getElementById(i).innerHTML = (nums[i]);
             } else {
@@ -53,29 +56,29 @@
         
         // Get the users numbers
         userIn = prompt("Please enter your first five lottery numbers separated by a space");
-        const user_nums = userIn.split(' ')
-        user_nums.sort(function(a, b){return a-b});
-        userIn2 = prompt("Please enter your lucky ball number");
+        user_nums = userIn.split(' ')
+        user_nums = user_nums.sort(function(a, b){return a-b});
+        userluck = prompt("Please enter your lucky ball number");
         
         // Put the users numbers on the screen
-        for (let i = 0; i < 6; i++){
+        for (i = 0; i < 6; i++){
             if (i < 5) {
                 document.getElementById((i+6)).innerHTML = (user_nums[i]);
             } else {
-                document.getElementById((i+6)).innerHTML = ("Lucky Ball: " + userIn2);
+                document.getElementById((i+6)).innerHTML = ("Lucky Ball: " + userluck);
             }
         }
         
         // Check if any numbers match
         count = 0;
-        for (let i = 0; i < 5; i++){
-            for (let j = 0; j < 5; j++){
+        for (i = 0; i < 5; i++){
+            for (j = 0; j < 5; j++){
                 if(nums[i] == user_nums[j]){
                     count++;
                 }
             }
         }
-        if(lucky == userIn2){
+        if(lucky == userluck){
             luckyday = true;
         } else {
             luckyday = false;
